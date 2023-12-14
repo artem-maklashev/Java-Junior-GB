@@ -18,7 +18,7 @@ public class Program {
      */
     public static void main(String[] args) {
         DB db = new DB();
-        // Create three Course records
+        //Создание экземпляров класса Course
         for (int i = 0; i < 3; i++) {
             try (Session session = db.openSession()) {
                 CourseRepository cr = new CourseRepository(session);
@@ -28,7 +28,7 @@ public class Program {
             }
         }
 
-        // Read all Course records and print them
+        //Чтение всех записей из таблицы
         try (Session session = db.openSession()) {
             CourseRepository cr = new CourseRepository(session);
             List<Course> courses = cr.readAll();
@@ -36,6 +36,17 @@ public class Program {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        //Чтение записи по Id
+        try (Session session = db.openSession()) {
+            CourseRepository cr = new CourseRepository(session);
+            Course course = cr.readById(1);
+            System.out.println(course);;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //Изменение записи
 
     }
 }
