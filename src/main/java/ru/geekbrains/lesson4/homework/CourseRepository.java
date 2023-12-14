@@ -42,11 +42,11 @@ public class CourseRepository {
         return course;
     }
 
-    public void update(int id, Course c) {
+    public void update(int id) {
         Transaction transaction = session.beginTransaction();
         Course course = session.get(Course.class, id);
-        course.setTitle(c.getTitle());
-        course.setDuration(c.getDuration());
+        course.updateTitle();
+        course.updateDuration();
         session.update(course);
         System.out.println("Курс обновлен");
         transaction.commit();

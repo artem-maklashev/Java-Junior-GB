@@ -51,12 +51,12 @@ public class Course {
         return new Course(titles[random.nextInt(titles.length)], random.nextInt(1, 5));
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
-    public void setDuration(int duration) {
-        this.duration = duration;
+    public void updateTitle() {
+        title = titles[random.nextInt(titles.length)] ;
+    }
+    public void updateDuration() {
+        duration = random.nextInt(1, 5);
     }
 
     @Override
@@ -67,4 +67,5 @@ public class Course {
                 ", duration=" + duration +
                 '}';
     }
+
 }
