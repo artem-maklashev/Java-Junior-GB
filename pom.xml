@@ -5,22 +5,32 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.geekbrains</groupId>
-    <artifactId>lesson3</artifactId>
+    <artifactId>lesson4</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
-        <!-- Добавляем зависимость для Jackson -->
+
+        <!-- MySQL JDBC Driver -->
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.16.0</version>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
         </dependency>
-        <!-- Поддержка xml-сериализатора -->
+
+        <!-- Hibernate -->
         <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-xml</artifactId>
-            <version>2.16.0</version>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.6.0.Final</version>
         </dependency>
+
+        <!-- C3P0 Connection Pooling -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>5.6.0.Final</version>
+        </dependency>
+
     </dependencies>
 
     <properties>
