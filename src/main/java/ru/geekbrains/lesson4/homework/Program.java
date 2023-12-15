@@ -1,6 +1,7 @@
 package ru.geekbrains.lesson4.homework;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.util.List;
 
@@ -17,36 +18,33 @@ public class Program {
      * Убедитесь, что каждая операция выполняется в отдельной транзакции.
      */
     public static void main(String[] args) {
-        DB db = new DB();
-        //Создание экземпляров класса Course
-        for (int i = 0; i < 3; i++) {
-            try (Session session = db.openSession()) {
-                CourseRepository cr = new CourseRepository(session);
-                cr.create();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
 
-        //Чтение всех записей из таблицы
-        try (Session session = db.openSession()) {
-            CourseRepository cr = new CourseRepository(session);
+        try {
+            CourseRepository cr = new CourseRepository();
+            //Создание экземпляров класса Course
+            for (int i = 0; i < 3; i++) {
+                cr.create();
+            }
+
+            //Чтение всех записей из таблицы
             List<Course> courses = cr.readAll();
             courses.forEach(System.out::println);
+
+
+            //Чтение записи по Id
+            int id = cr.getRandomId();
+            Course course = cr.readById(id);
+            System.out.println(course);
+
+            //Изменение записи
+            cr.update(id);
+            System.out.println(cr.readById(id));
+
+            //удаление записи
+            cr.delete(course);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        //Чтение записи по Id
-        try (Session session = db.openSession()) {
-            CourseRepository cr = new CourseRepository(session);
-            Course course = cr.readById(1);
-            System.out.println(course);;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        //Изменение записи
-
     }
 }

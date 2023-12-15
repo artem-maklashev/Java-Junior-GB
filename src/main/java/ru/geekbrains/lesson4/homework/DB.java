@@ -17,10 +17,6 @@ public class DB {
         this.session = sessionFactory.getCurrentSession();
     }
 
-    public Session getSession() {
-        return session;
-    }
-
     public Session openSession() {
         return sessionFactory.openSession();
     }

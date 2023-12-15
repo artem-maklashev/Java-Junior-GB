@@ -8,7 +8,8 @@ import java.util.Random;
 @Entity
 @Table(name = "courses")
 public class Course {
-    private static final String[] titles = new String[]{"Математика", "Алгебра", "Геометрия", "Руский язык", "Литература"};
+    private static final String[] titles = new String[]{"Математика", "Алгебра", "Геометрия", "Руский язык", "Литература",
+            "Информатика", "Английский язык", "Химия", "Физика"};
     private static final Random random = new Random();
 
     @Id
@@ -53,10 +54,11 @@ public class Course {
 
 
     public void updateTitle() {
-        title = titles[random.nextInt(titles.length)] ;
+        title = titles[random.nextInt(titles.length)];
     }
+
     public void updateDuration() {
-        duration = random.nextInt(1, 5);
+        duration = random.nextInt(1, 10);
     }
 
     @Override
